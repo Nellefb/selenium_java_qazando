@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Estrutura principal do projeto Maven
+-->
+
+<project
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+        xsi:schemaLocation="
+            http://maven.apache.org/POM/4.0.0
+            http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- Versão do modelo do POM -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Nome do grupo/projeto -->
+    <groupId>org.example</groupId>
+
+    <!-- Nome da aplicação -->
+    <artifactId>QazandoSeleniumTest</artifactId>
+
+    <!-- Versão do projeto -->
+    <version>1.0-SNAPSHOT</version>
+
+    <!--
+        PROPERTIES:
+        Variáveis reutilizáveis do Maven
+    -->
+
+    <properties>
+
+        <!-- Versão do Java utilizada -->
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+
+        <!-- Codificação UTF-8 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Versão do Cucumber -->
+        <cucumber.version>7.15.0</cucumber.version>
+
+        <!-- Versão do Selenium -->
+        <selenium.version>4.21.0</selenium.version>
+
+        <!-- Versão do JUnit -->
+        <junit.version>4.13.2</junit.version>
+
+    </properties>
+
+    <!--DEPENDÊNCIAS  Bibliotecas utilizadas no projeto -->
+
+    <dependencies>
+
+        <!-- CUCUMBER JAVA  Responsável pelos Steps:-->
+
+        <dependency>
+
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+
+            <!-- Usa a versão definida em properties -->
+            <version>${cucumber.version}</version>
+
+            <!-- Utilizado apenas em testes -->
+            <scope>test</scope>
+
+        </dependency>
+
+        <!--
+            CUCUMBER JUNIT
+
+            Faz o JUnit executar os cenários do Cucumber
+        -->
+
+        <dependency>
+
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+
+            <version>${cucumber.version}</version>
+
+            <scope>test</scope>
+
+        </dependency>
+
+        <!--
+            JUNIT
+
+            Framework de testes Java
+        -->
+
+        <dependency>
+
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+
+            <!-- Usa a variável criada nas properties -->
+            <version>${junit.version}</version>
+
+            <scope>test</scope>
+
+        </dependency>
+
+        <!--
+            SELENIUM
+
+            Biblioteca para automação web
+        -->
+
+        <dependency>
+
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+
+            <version>${selenium.version}</version>
+
+        </dependency>
+
+        <dependency>
+            <groupId>com.trivago.rta</groupId>
+            <artifactId>cluecumber-report-plugin</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.0.0-M5</version>
+        </dependency>
+
+    </dependencies>
+
+    <!--
+        BUILD:
+        Configurações de compilação do projeto
+    -->
+
+    <build>
+
+        <plugins>
+
+            <!--
+                Plugin responsável por compilar o Java
+            -->
+
+            <plugin>
+
+                <!-- Plugin oficial do Maven -->
+                <groupId>org.apache.maven.plugins</groupId>
+
+                <!-- Plugin de compilação -->
+                <artifactId>maven-compiler-plugin</artifactId>
+
+                <!-- Versão do plugin -->
+                <version>3.11.0</version>
+
+                <configuration>
+
+                    <!-- Define que o projeto usa Java 17 -->
+                    <source>17</source>
+                    <target>17</target>
+
+                </configuration>
+
+            </plugin>
+            <plugin>
+                <groupId>com.trivago.rta</groupId>
+                <artifactId>cluecumber-report-plugin</artifactId>
+                <version>2.9.4</version>
+
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>reporting</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+                <configuration>
+                    <sourceJsonReportDirectory>
+                        target/cucumber-report
+                    </sourceJsonReportDirectory>
+
+                    <generatedHtmlReportDirectory>
+                        target/cluecumber-report
+                    </generatedHtmlReportDirectory>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+            </plugin>
+        </plugins>
+
+
+    </build>
+
+</project>
