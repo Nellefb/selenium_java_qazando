@@ -1,11 +1,14 @@
 package steps;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 import pages.HomePage;
 import pages.LoginPage;
 import runner.RunCucumberTest;
+import support.ScreenshotUtils;
 import support.Utils;
 
 public class LoginSteps extends RunCucumberTest {
@@ -49,4 +52,8 @@ public class LoginSteps extends RunCucumberTest {
         loginPage.verificaCampoVazio(message);
     }
 
+    @After
+    public void afterScenario(Scenario scenario){
+        ScreenshotUtils.addScreenshotOnScenario(scenario);
+    }
 }

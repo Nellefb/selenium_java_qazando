@@ -1,10 +1,13 @@
 package pages;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import runner.RunCucumberTest;
 import support.CommandsTest;
+import support.ScreenshotUtils;
 import support.Utils;
 
 import static support.CommandsTest.checkMessage;
@@ -27,4 +30,5 @@ public class PainelPage extends RunCucumberTest {
         String email_text = emailMensagem.getText();
         Assert.assertEquals( "Não apareceu","Olá, " + email, email_text);
     }
+
 }

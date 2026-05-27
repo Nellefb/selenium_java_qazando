@@ -2,6 +2,7 @@ package runner;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -24,6 +25,12 @@ public class RunBase {
             case "chrome":
                 driver = new ChromeDriver();
                 break;
+            case "chrome-ci":
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--headless");
+                chromeOptions.addArguments("--window-size=1920,1080");
+                driver = new ChromeDriver(chromeOptions);
+                break;
             case "firefox":
                 driver = new FirefoxDriver();
                 break;
@@ -31,7 +38,7 @@ public class RunBase {
                 throw new IllegalArgumentException("Passe um navegador válido");
         }
         if(driver != null){
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         }
         return driver;
     }

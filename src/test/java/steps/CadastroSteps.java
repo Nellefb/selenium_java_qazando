@@ -1,11 +1,14 @@
 package steps;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 import pages.CadastroPage;
 import pages.HomePage;
 import runner.RunCucumberTest;
+import support.ScreenshotUtils;
 
 public class CadastroSteps extends RunCucumberTest {
 
@@ -38,4 +41,10 @@ public class CadastroSteps extends RunCucumberTest {
     public void vejo_a_mensagem_de_de_campo_inválido(String message) {
         cadastroPage.verificaCampo(message);
     }
+
+    @After
+    public void afterScenario(Scenario scenario){
+        ScreenshotUtils.addScreenshotOnScenario(scenario);
+    }
 }
+

@@ -14,7 +14,7 @@ public class CommandsTest extends RunCucumberTest {
     public static void clickElement(By element){
         try {
             System.out.println("Vai clicar no elemento : " + element);
-            esperarElementoClicavel(element, 2000);
+            esperarElementoVisivel(element, 10);
             getDriver().findElement(element).click();
             System.out.println("Clicou no elemento : " + element);
         } catch (Exception error){
@@ -23,10 +23,11 @@ public class CommandsTest extends RunCucumberTest {
         }
     }
 
+
     public static void fillField(By element, String value){
         try {
             System.out.println("Vai preencher o campo : " + element);
-            esperarElementoVisivel(element, 2000);
+            esperarElementoVisivel(element, 10);
             getDriver().findElement(element).sendKeys(value);
             System.out.println("Preencheu o campo : " + element);
         } catch (Exception error){
@@ -46,7 +47,7 @@ public class CommandsTest extends RunCucumberTest {
     }
 
     public static void checkMessage(By element, String expectedMessage){
-        esperarElementoVisivel(element, 10000);
+        esperarElementoVisivel(element, 10);
         String actualMessage = getDriver().findElement(element).getText();
         Assert.assertEquals("Erro ao validar mensagem", expectedMessage, actualMessage);
     }

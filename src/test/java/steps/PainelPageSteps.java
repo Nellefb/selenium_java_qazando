@@ -1,8 +1,11 @@
 package steps;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.pt.Entao;
 import pages.PainelPage;
 import runner.RunCucumberTest;
+import support.ScreenshotUtils;
 
 public class PainelPageSteps extends RunCucumberTest {
 
@@ -19,4 +22,10 @@ public class PainelPageSteps extends RunCucumberTest {
     public void vejo_a_mensagem_de_login_realizado_com_sucesso() {
         painelPage.validarMensagemLogin(loginSteps.email);
     }
+
+    @After
+    public void afterScenario(Scenario scenario){
+        ScreenshotUtils.addScreenshotOnScenario(scenario);
+    }
 }
+

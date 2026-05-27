@@ -9,6 +9,7 @@ Funcionalidade: Login de usuário
   Contexto: Acessar tela de login
     Dado que estou na tela de login
 
+    @login_sucesso
   Cenario: Login com sucesso
     Quando preencho email e senha
     E clico em login
