@@ -12,7 +12,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 @CucumberOptions(
         plugin = { "json:target/cucumber-report/report.json","html:target/reports/report.html"},
         features = "src/test/resources/features",
-        tags = "@Login",
+        tags = "",
         glue = "steps"
 )
 public class RunCucumberTest extends RunBase{

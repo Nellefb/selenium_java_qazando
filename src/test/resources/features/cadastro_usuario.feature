@@ -1,6 +1,6 @@
 # language: pt
 
-@cadastro
+@Cadastro
 Funcionalidade: Cadastro de usuário
   Eu como novo usuário
   Quero me cadastrar da Qazando Shop
@@ -15,7 +15,7 @@ Funcionalidade: Cadastro de usuário
     E clico em cadastrar
     Entao vejo a mensagem de cadastro realizado com sucesso
 
-    @cadastro_incorreto
+  @cadastro_incorreto
   Esquema do Cenario: Cadastrar usuario com <titulo>
     Quando eu preencho o formulario de cadastro com nome "<name>" email "<email>" e senha "<password>"
     E clico em cadastrar
