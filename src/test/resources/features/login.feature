@@ -22,7 +22,7 @@ Funcionalidade: Login de usuário
 
     @login_invalido
   Esquema do Cenario: Validar <name>
-   # Quando preencho login "<user>" e senha "<password>"
+    Quando preencho login "<user>" e senha "<password>"
     E clico em login
     Entao vejo a mensagem "<message>" de campo não preenchido
 
