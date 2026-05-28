@@ -9,7 +9,7 @@ Funcionalidade: Login de usuário
   Contexto: Acessar tela de login
     Dado que estou na tela de login
 
-    @login_sucesso
+  @login_sucesso
   Cenario: Login com sucesso
     Quando preencho email e senha
     E clico em login
@@ -20,7 +20,7 @@ Funcionalidade: Login de usuário
     E clico em login
     Entao vejo a mensagem de login realizado com sucesso
 
-    @login_invalido
+  @login_invalido
   Esquema do Cenario: Validar <name>
     Quando preencho login "<user>" e senha "<password>"
     E clico em login
